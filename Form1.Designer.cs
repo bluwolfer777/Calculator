@@ -46,6 +46,10 @@
             this.button_comma = new System.Windows.Forms.Button();
             this.button_divide = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button_factorial = new System.Windows.Forms.Button();
+            this.button_radical = new System.Windows.Forms.Button();
+            this.button_del_last = new System.Windows.Forms.Button();
+            this.button_del_all = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -206,6 +210,7 @@
             this.button_comma.TabIndex = 15;
             this.button_comma.Text = ".";
             this.button_comma.UseVisualStyleBackColor = true;
+            this.button_comma.Click += new System.EventHandler(this.button_comma_Click);
             // 
             // button_divide
             // 
@@ -228,12 +233,56 @@
             this.label1.TabIndex = 17;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // button_factorial
+            // 
+            this.button_factorial.Location = new System.Drawing.Point(10, 457);
+            this.button_factorial.Name = "button_factorial";
+            this.button_factorial.Size = new System.Drawing.Size(95, 65);
+            this.button_factorial.TabIndex = 18;
+            this.button_factorial.Text = "!";
+            this.button_factorial.UseVisualStyleBackColor = true;
+            this.button_factorial.Click += new System.EventHandler(this.button_factorial_Click);
+            // 
+            // button_radical
+            // 
+            this.button_radical.Location = new System.Drawing.Point(105, 457);
+            this.button_radical.Name = "button_radical";
+            this.button_radical.Size = new System.Drawing.Size(95, 65);
+            this.button_radical.TabIndex = 19;
+            this.button_radical.Text = "√";
+            this.button_radical.UseVisualStyleBackColor = true;
+            this.button_radical.Click += new System.EventHandler(this.button_radical_Click);
+            // 
+            // button_del_last
+            // 
+            this.button_del_last.Location = new System.Drawing.Point(200, 457);
+            this.button_del_last.Name = "button_del_last";
+            this.button_del_last.Size = new System.Drawing.Size(95, 65);
+            this.button_del_last.TabIndex = 20;
+            this.button_del_last.Text = "AC";
+            this.button_del_last.UseVisualStyleBackColor = true;
+            this.button_del_last.Click += new System.EventHandler(this.button_del_last_Click);
+            // 
+            // button_del_all
+            // 
+            this.button_del_all.Location = new System.Drawing.Point(295, 457);
+            this.button_del_all.Name = "button_del_all";
+            this.button_del_all.Size = new System.Drawing.Size(95, 65);
+            this.button_del_all.TabIndex = 21;
+            this.button_del_all.Text = "C";
+            this.button_del_all.UseVisualStyleBackColor = true;
+            this.button_del_all.Click += new System.EventHandler(this.button_del_all_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(404, 463);
+            this.ClientSize = new System.Drawing.Size(404, 548);
+            this.Controls.Add(this.button_del_all);
+            this.Controls.Add(this.button_del_last);
+            this.Controls.Add(this.button_radical);
+            this.Controls.Add(this.button_factorial);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_divide);
             this.Controls.Add(this.button_comma);
@@ -279,6 +328,10 @@
         private System.Windows.Forms.Button button_comma;
         private System.Windows.Forms.Button button_divide;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_factorial;
+        private System.Windows.Forms.Button button_radical;
+        private System.Windows.Forms.Button button_del_last;
+        private System.Windows.Forms.Button button_del_all;
     }
 }
 

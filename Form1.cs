@@ -95,15 +95,17 @@ namespace Calculator_0._1
             int arrayPos = 0;
             bool num = true;
             string[] calc = new string[lenght];
-            int final_value = 0;
+            float final_value = 0;
+
             for (int i = 0; i < lenght; i++)
             {
                 calcText[i] = textBox1.Text[i].ToString();
             }
 
+
             for (int i = 0; i < lenght; i++)
             {
-                if ((calcText[i] == "+") || (calcText[i] == "-") || (calcText[i] == "*") || (calcText[i] == "/"))
+                if ((calcText[i] == "+") || (calcText[i] == "-") || (calcText[i] == "*") || (calcText[i] == "/") || (calcText[i] == "√") || (calcText[i] == "!"))
                 {
                     num = false;
                 }
@@ -111,6 +113,8 @@ namespace Calculator_0._1
                 {
                     num = true;
                 }
+
+
                 if (num)
                 {
                     calc[arrayPos] += calcText[i];
@@ -122,51 +126,99 @@ namespace Calculator_0._1
                     arrayPos++;
                 }
             }
-            System.Console.WriteLine(calc[0]);
-            System.Console.WriteLine(calc[1]);
-            System.Console.WriteLine(calc[2]);
             if (calc[1] == "+")
             {
-                final_value = Convert.ToInt32(calc[0]) + Convert.ToInt32(calc[2]);
+                final_value = Convert.ToSingle(calc[0]) + Convert.ToSingle(calc[2]);
             }
             else if (calc[1] == "-")
             {
-                final_value = Convert.ToInt32(calc[0]) - Convert.ToInt32(calc[2]);
+                final_value = Convert.ToSingle(calc[0]) - Convert.ToSingle(calc[2]);
             }
             else if (calc[1] == "*")
             {
-                final_value = Convert.ToInt32(calc[0]) * Convert.ToInt32(calc[2]);
+                final_value = Convert.ToSingle(calc[0]) * Convert.ToSingle(calc[2]);
             }
             else if (calc[1] == "/")
             {
-                final_value = Convert.ToInt32(calc[0]) / Convert.ToInt32(calc[2]);
+                final_value = Convert.ToSingle(calc[0]) / Convert.ToSingle(calc[2]);
             }
-            System.Console.WriteLine(final_value);
+            else if (calc[0] == "√")
+            {
+                final_value = Convert.ToSingle(Math.Sqrt(Convert.ToDouble(calc[1])));
+            }
+            else if (calc[1] == "!")
+            {
+                final_value = Convert.ToSingle(calc[0]);
+                for (int i = Convert.ToInt32(final_value-1); i > 0; i--)
+                {
+                    final_value *= i;
+                }
+            }
+
+
             for (int i = 4; i < calc.Length; i+=2)
             {
                 if (calc[i] == "+")
                 {
-                    final_value += Convert.ToInt32(calc[i + 1]);
+                    final_value += Convert.ToSingle(calc[i + 1]);
                 }
                 else if (calc[i] == "-")
                 {
-                    final_value -= Convert.ToInt32(calc[i + 1]);
+                    final_value -= Convert.ToSingle(calc[i + 1]);
                 }
                 else if (calc[i] == "*")
                 {
-                    final_value *= Convert.ToInt32(calc[i + 1]);
+                    final_value *= Convert.ToSingle(calc[i + 1]);
                 }
                 else if (calc[i] == "/")
                 {
-                    final_value /= Convert.ToInt32(calc[i + 1]);
+                    final_value /= Convert.ToSingle(calc[i + 1]);
                 }
             }
+
+
             label1.Text = final_value.ToString();
         }
 
         private void button_equal_Click(object sender, EventArgs e)
         {
             equal_on_press();
+        }
+
+        private void button_comma_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += ".";
+        }
+
+        private void button_del_all_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+        }
+
+        private void button_del_last_Click(object sender, EventArgs e)
+        {
+            string[] text = new string[textBox1.Text.Length];
+            string first_text = textBox1.Text;
+            for (int i = 0; i < textBox1.Text.Length; i++)
+            {
+                text[i] = first_text[i].ToString();
+            }
+            text[first_text.Length-1] = "";
+            textBox1.Text = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                textBox1.Text += text[i];
+            }
+        }
+
+        private void button_radical_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "√";
+        }
+
+        private void button_factorial_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "!";
         }
     }
 }
